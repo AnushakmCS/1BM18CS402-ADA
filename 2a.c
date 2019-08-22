@@ -29,7 +29,13 @@ int main()
 	printf("the smallest elemt is %d",a[k-1]);
 }
 	
-	
+	/* enter the number of elemnts4
+enter the element1
+2
+3
+4
+enter the k3
+the smallest elemt is 3 */
 
 
 
