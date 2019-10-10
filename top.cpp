@@ -1,45 +1,55 @@
-#include <iostream>
-#include<list>
+#include<iostream>
 
-using namespace std;
+using namespace std;​
+2
+}
+3
 
-int adj[10][10],M,indegree[10],j;
-void Topological()
-{ 
-    for(int i = 1; i <= M; i++) 
-	{
-        indegree[i] = 0; 
-		for(int j=0;j<M;j++)
-			indegree[i]=indegree[i]+adj[j][i];
-	}
-	for(int i=1;i<=M;i++)
-    { 
-        for(j=1;j<=M;j++)
-		{
-			if(indegree[j]==0)
-			{
-				cout<<j<<" ";
-				indegree[j]=-1;
-				for(int k=1;k<=M;k++)
-				{
-					if(adj[j][k]==1)
-						indegree[k]=indegree[k]-1;
-				}
-			}
-			
-		}
-	}
+
+int adj[50][50],n,indegree[50];
+
+void TopologicalOrder()
+{
+    int i,j,k;
+    for(i=0;i<n;i++)
+    {
+        indegree[i]=0;
+        for(j=0;j<n;j++)
+            indegree[i]=indegree[i]+adj[j][i];
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+            if(indegree[j]==0){
+                cout<<j<<" ";
+                break;
+            }
+        indegree[j]=-1;
+        for(k=0;k<n;k++)
+            if(adj[j][k]==1)
+                indegree[k]-=1;
+    }
+
 }
 int main()
 {
-	int j,i,S;
-	cout<<"enter the number of nodes\n";
-	cin>>M;
-	cout<<"enter  the adjacency matrix\n";
-	for(i=1;i<=M;i++)
-		for(j=1;j<=M;j++)
-			cin>>adj[i][j];
-	Topological();
-	cout<<"\n";
-	return 0;
+    int d,p1,p2;
+    cout<<"Enter the number of tasks: ";
+    cin>>n;
+    cout<<"Enter the number of dependencies: "<<endl;
+    cin>>d;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+            adj[i][j]=0;
+    }
+    for(int i=0;i<d;i++)
+    {
+        cout<<"Enter the dependencies: ";
+        cin>>p1>>p2;
+        adj[p2][p1]=1;
+    }
+
+    TopologicalOrder();
+    return 0;
 }
