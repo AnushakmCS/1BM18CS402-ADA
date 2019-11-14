@@ -83,3 +83,23 @@ void dijkstra(int G[MAX][MAX],int n,int startnode)
 			}while(j!=startnode);
 	}
 }
+/*
+Enter no. of vertices:5
+
+Enter the adjacency matrix:
+0 7 8 0 0
+7 0 1 2 6
+8 1 0 2 0
+0 2 2 0 4
+0 6 0 4 0
+
+Enter the starting node:0
+
+Distance of node1=7
+Path=1<-0
+Distance of node2=8
+Path=2<-0
+Distance of node3=9
+Path=3<-1<-0
+Distance of node4=13
+Path=4<-1<-0*/
